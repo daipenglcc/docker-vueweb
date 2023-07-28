@@ -48,6 +48,13 @@ RUN mv phpMyAdmin-5.0.1-all-languages /phpmyadmin
 # CMD ["php8.2-fpm", "-F"]
 
 
+# 将脚本赋予 x 权限
+COPY ./entrypoint.sh /
+RUN chmod -R 777 /entrypoint.sh
+
+# 设置 ENTRYPOINT
+# ENTRYPOINT ["/entrypoint.sh"]
+
 # 清理 & 检查
 ## 清理无用的包
 RUN apt-get clean
